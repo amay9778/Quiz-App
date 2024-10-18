@@ -33,6 +33,16 @@ const tryagn = document.querySelector('.btn');
 
 let m=0;
 
+next.addEventListener('click',()=>{
+    m+=1;
+    quiz();
+    if(m== ques.length-1){
+        document.querySelector('.answer').style.display = 'none';
+        next.style.display = 'none';
+        document.querySelector('.heading').style.display = 'none';
+    }
+})
+
 function quiz(){
     question.innerHTML = ques[m].Q;
 
@@ -50,8 +60,19 @@ function quiz(){
                 e.target.parentElement.style.backgroundColor='green';
                 next.style.display = 'flex';
             }
+            else{
+                document.querySelector('.box').style.display = 'none';
+                e.target.parentElement.style.backgroundColor = 'red';
+                document.querySelector('.win').style.display = 'block';
+                document.querySelector('.btn').style.display = 'flex';
+
+            }
         })
     }
 }
+
+tryagn.addEventListener('click',()=>{
+    location.reload(true);
+})
 
 quiz();
